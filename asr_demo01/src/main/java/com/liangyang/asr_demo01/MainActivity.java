@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -19,8 +20,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView mInputTv;
-    private ImageButton mVoiceBtn;
+    private EditText mInputTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         //在代码中初始化SDK
         SpeechUtility.createUtility(MainActivity.this, SpeechConstant.APPID + "=5872ea13");//申请的Appid
         //初始化视图
-        mInputTv = (TextView) findViewById(R.id.input_tv);
+        mInputTv = (EditText) findViewById(R.id.input_et);
     }
 
     /**
@@ -65,7 +65,8 @@ public class MainActivity extends AppCompatActivity {
                      */
                     String result = parseVoice(recognizerResult.getResultString());
                     //显示语音识别
-                    mInputTv.setText(result);
+                    //mInputTv.setText(result);
+                    mInputTv.append(result);
                 }
             }
 
